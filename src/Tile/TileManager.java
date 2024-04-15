@@ -12,8 +12,8 @@ import static Graphics.Assets.*;
 
 public class TileManager {
     GamePanel gp;
-    Tile[] tile;
-    int mapTileNum[][];
+    public Tile[] tile;
+    public int[][] mapTileNum;
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
@@ -36,32 +36,45 @@ public class TileManager {
             tile[1].image = ground2;
             tile[2] = new Tile();
             tile[2].image = hole;
+            tile[2].collission = true;
             tile[3] = new Tile();
             tile[3].image = wallUp;
+            tile[3].collission = true;
             tile[4] = new Tile();
             tile[4].image = wallDown;
+            tile[4].collission = true;
             tile[5] = new Tile();
             tile[5].image = wallLeft;
+            tile[5].collission = true;
             tile[6] = new Tile();
             tile[6].image = wallRight;
+            tile[6].collission = true;
             tile[7] = new Tile();
             tile[7].image = cornerUpLeft;
+            tile[7].collission = true;
             tile[8] = new Tile();
             tile[8].image = cornerUpRight;
+            tile[8].collission = true;
             tile[9] = new Tile();
             tile[9].image = cornerDownLeft;
+            tile[9].collission = true;
             tile[10] = new Tile();
             tile[10].image = cornerDownRight;
+            tile[10].collission = true;
             tile[11] = new Tile();
             tile[11].image = rock1;
+            tile[11].collission = true;
             tile[12] = new Tile();
             tile[12].image = rock2;
+            tile[12].collission = true;
             tile[13] = new Tile();
             tile[13].image = plant1;
-            tile[14] = new Tile();
-            tile[14].image = plant2;
+            tile[13].collission = true;
             tile[15] = new Tile();
-            tile[15].image = bones;
+            tile[15].image = plant2;
+            tile[15].collission = true;
+            tile[14] = new Tile();
+            tile[14].image = bones;
 
         }catch (Exception e){
             e.printStackTrace();

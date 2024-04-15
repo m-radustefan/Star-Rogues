@@ -102,8 +102,8 @@ public class Assets {
         rock1= sheetTiles.cropTile(3,1);
         rock2= sheetTiles.cropTile(5,1);
         plant1= sheetTiles.cropTile(7,1);
-        plant2= sheetTiles.cropTile(9,1);
-        bones= sheetTiles.cropTile(11,1);
+        bones= sheetTiles.cropTile(9,1);
+        plant2= sheetTiles.cropTile(11,1);
 
 
 
