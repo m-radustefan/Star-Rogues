@@ -41,6 +41,11 @@ public class Assets {
     public static BufferedImage cornerDownLeft;
     public static BufferedImage cornerDownRight;
     public static BufferedImage hole;
+    public static BufferedImage rock1;
+    public static BufferedImage rock2;
+    public static BufferedImage plant1;
+    public static BufferedImage plant2;
+    public static BufferedImage bones;
 
     public static void Init()
     {
@@ -94,6 +99,11 @@ public class Assets {
         cornerDownLeft= sheetTiles.cropTile(16,0);
         cornerDownRight= sheetTiles.cropTile(18,0);
         hole = sheetTiles.cropTile(1,1);
+        rock1= sheetTiles.cropTile(3,1);
+        rock2= sheetTiles.cropTile(5,1);
+        plant1= sheetTiles.cropTile(7,1);
+        plant2= sheetTiles.cropTile(9,1);
+        bones= sheetTiles.cropTile(11,1);
 
 
 

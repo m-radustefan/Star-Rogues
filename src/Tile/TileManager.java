@@ -52,6 +52,16 @@ public class TileManager {
             tile[9].image = cornerDownLeft;
             tile[10] = new Tile();
             tile[10].image = cornerDownRight;
+            tile[11] = new Tile();
+            tile[11].image = rock1;
+            tile[12] = new Tile();
+            tile[12].image = rock2;
+            tile[13] = new Tile();
+            tile[13].image = plant1;
+            tile[14] = new Tile();
+            tile[14].image = plant2;
+            tile[15] = new Tile();
+            tile[15].image = bones;
 
         }catch (Exception e){
             e.printStackTrace();
