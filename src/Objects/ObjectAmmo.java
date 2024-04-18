@@ -15,5 +15,6 @@ public class ObjectAmmo extends ObjectsMain {
         catch(Exception e){
             e.printStackTrace();
         }
+        collision = false;
     }
 }

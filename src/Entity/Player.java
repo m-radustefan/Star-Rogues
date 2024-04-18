@@ -19,6 +19,8 @@ public class Player extends  Entity {
     public final int screenX;
     public final int screenY;
 
+    int hasAmmo = 0;
+
     public Player (GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
@@ -26,7 +28,15 @@ public class Player extends  Entity {
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
 
-        bounds = new Rectangle(6, 38,24 ,24 );
+        bounds = new Rectangle();
+        bounds.x = 6;
+        bounds.y = 38;
+        bounds.width = 24;
+        bounds.height = 24;
+
+        boundsDefaultX = 6;
+        boundsDefaultY = 38;
+
 
         setDefaultValues();
     }
@@ -57,6 +67,10 @@ public class Player extends  Entity {
             //CHECK COLLISION
             collisionOn = false;
             gp.collisionCheck.checkTile(this);
+
+            //CHECK OBJECT COLLISION
+            int objectIndex = gp.collisionCheck.checkObject(this,true);
+            pickObject(objectIndex);
 
             //IF COLLISION = FALSE, CAN MOVE
             if(collisionOn == false){
@@ -156,6 +170,23 @@ public class Player extends  Entity {
 
 
     }
+
+    public void pickObject(int index)
+    {
+        if(index != 999)
+        {
+            String objectName = gp.objectsMain[index].name;
+            gp.objectsMain[index] = null;
+            switch (objectName) {
+                case "Ammo":
+                    hasAmmo+=30;
+                    gp.objectsMain[index] = null;
+                    System.out.println("Ammo: " + hasAmmo);
+                    break;
+            }
+        }
+    }
+
     public void  draw(Graphics2D g2) {
 
         Init();

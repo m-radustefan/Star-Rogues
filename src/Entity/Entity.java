@@ -14,6 +14,8 @@ public class Entity {
     public int spriteNum = 1;
 
     public Rectangle bounds;
+
+    public int boundsDefaultX, boundsDefaultY;
     public boolean collisionOn = false;
 
 }
