@@ -46,6 +46,7 @@ public class Assets {
     public static BufferedImage plant1;
     public static BufferedImage plant2;
     public static BufferedImage bones;
+    public static BufferedImage ammo;
 
     public static void Init()
     {
@@ -55,6 +56,7 @@ public class Assets {
         SpriteSheet sheetPlayerUp = new SpriteSheet(ImageLoader.LoadImage("/player/Cyborg_run_back.png"));
         SpriteSheet sheetPlayerDown = new SpriteSheet(ImageLoader.LoadImage("/player/Cyborg_run_front.png"));
         SpriteSheet sheetTiles = new SpriteSheet(ImageLoader.LoadImage("/tiles/SpriteSheet.png"));
+        SpriteSheet sheetObjects = new SpriteSheet(ImageLoader.LoadImage("/objects/Iconset1.png"));
 
 
         playerIdle1= sheetPlayerIdle.cropPlayer(0,0);
@@ -105,7 +107,7 @@ public class Assets {
         bones= sheetTiles.cropTile(9,1);
         plant2= sheetTiles.cropTile(11,1);
 
-
+        ammo=sheetObjects.cropObjects(2,0);
 
 
     }

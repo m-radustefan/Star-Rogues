@@ -9,6 +9,8 @@ public class SpriteSheet {
     private static final int playerHeight = 32;
     private static final int tileWidth = 48;
     private static final int tileHeight  = 48;
+    private static final int objectWidth = 32;
+    private static final int objectHeight = 32;
 
 
 
@@ -25,5 +27,10 @@ public class SpriteSheet {
     public BufferedImage cropTile(int x, int y)
     {
         return  spriteSheet.getSubimage(x* tileWidth,y* tileHeight, tileWidth, tileHeight);
+    }
+
+    public BufferedImage cropObjects(int x, int y)
+    {
+        return  spriteSheet.getSubimage(x* objectWidth,y* objectHeight, objectWidth, objectHeight);
     }
 }

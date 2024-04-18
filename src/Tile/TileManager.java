@@ -13,9 +13,11 @@ import static Graphics.Assets.*;
 public class TileManager {
     GamePanel gp;
     public Tile[] tile;
+    public Tile[] objects;
     public int[][] mapTileNum;
 
     public TileManager(GamePanel gp) {
+
         this.gp = gp;
 
         tile = new Tile[20];
@@ -76,6 +78,7 @@ public class TileManager {
             tile[14] = new Tile();
             tile[14].image = bones;
 
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -110,7 +113,7 @@ public class TileManager {
         }
         catch (Exception e)
         {
-
+            e.printStackTrace();
         }
     }
 

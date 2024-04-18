@@ -1,10 +1,14 @@
 package Main;
 
 import Entity.Player;
+import Objects.ObjectAmmo;
+import Objects.ObjectsMain;
 import Tile.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
+
+import static Graphics.Assets.Init;
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -31,11 +35,11 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
     public CollisionCheck collisionCheck = new CollisionCheck(this);
+    public AssetCreate assetCreate = new AssetCreate(this);
     public Player player = new Player(this,keyH);
+    public ObjectsMain objectsMain[] = new ObjectsMain[10];
 
-    int playerX = 100;
-    int playerY = 100;
-    int playerSpeed = 4;
+
 
     public GamePanel(){
 
@@ -45,6 +49,11 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(keyH);
         this.setFocusable(true);
 
+    }
+
+    public void setupObjects(){
+
+        assetCreate.setObjects();
     }
 
     public void startGameThread() {
@@ -102,8 +111,19 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D)g;
 
+        //TILE
         tileManager.draw(g2);
 
+        //OBJECTS
+        for( int i=0; i < objectsMain.length; i++)
+        {
+
+            if(objectsMain[i] != null){
+                objectsMain[i].draw(g2,this);
+            }
+        }
+
+        //PLAYER
         player.draw(g2);
 
         g2.dispose();
