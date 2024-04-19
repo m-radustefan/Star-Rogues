@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gameThread;
     public CollisionCheck collisionCheck = new CollisionCheck(this);
     public AssetCreate assetCreate = new AssetCreate(this);
-    public Player player = new Player(this,keyH);
+    public Player player =  Player.getInstance(this,keyH);
     public ObjectsMain objectsMain[] = new ObjectsMain[10];
 
 

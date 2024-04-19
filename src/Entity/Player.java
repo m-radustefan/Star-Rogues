@@ -18,10 +18,13 @@ public class Player extends  Entity {
 
     public final int screenX;
     public final int screenY;
+    public static Player instance;
+
+
 
     int hasAmmo = 0;
 
-    public Player (GamePanel gp, KeyHandler keyH) {
+    private Player (GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
 
@@ -39,6 +42,13 @@ public class Player extends  Entity {
 
 
         setDefaultValues();
+    }
+    public static Player getInstance (GamePanel gp, KeyHandler keyH) {
+        if (instance == null)
+        {
+            instance = new Player(gp, keyH);
+        }
+        return instance;
     }
     public void setDefaultValues() {
          worldX = 100;
