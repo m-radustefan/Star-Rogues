@@ -47,6 +47,7 @@ public class Assets {
     public static BufferedImage plant2;
     public static BufferedImage bones;
     public static BufferedImage ammo;
+    public static BufferedImage weapon;
 
     public static void Init()
     {
@@ -108,6 +109,7 @@ public class Assets {
         plant2= sheetTiles.cropTile(11,1);
 
         ammo=sheetObjects.cropObjects(2,0);
+        weapon=sheetObjects.cropObjects(0,3);
 
 
     }
