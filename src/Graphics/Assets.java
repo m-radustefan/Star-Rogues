@@ -48,6 +48,20 @@ public class Assets {
     public static BufferedImage bones;
     public static BufferedImage ammo;
     public static BufferedImage weapon;
+    public static BufferedImage waterCornerUpLeft;
+    public static BufferedImage waterCornerUpRight;
+    public static BufferedImage waterCornerDownLeft;
+    public static BufferedImage waterCornerDownRight;
+    public static BufferedImage waterMiddleLeft;
+    public static BufferedImage waterMiddleRight;
+    public static BufferedImage waterMiddleUp;
+    public static BufferedImage waterMiddleDown;
+    public static BufferedImage waterCenter;
+    public static BufferedImage water;
+    public static BufferedImage waterInsideCornerUpLeft;
+    public static BufferedImage waterInsideCornerUpRight;
+    public static BufferedImage waterInsideCornerDownLeft;
+    public static BufferedImage waterInsideCornerDownRight;
 
     public static void Init()
     {
@@ -107,6 +121,21 @@ public class Assets {
         plant1= sheetTiles.cropTile(7,1);
         bones= sheetTiles.cropTile(9,1);
         plant2= sheetTiles.cropTile(11,1);
+
+        water= sheetTiles.cropTile(4,2);
+        waterCornerUpLeft = sheetTiles.cropTile(0,2);
+        waterCornerUpRight = sheetTiles.cropTile(2,2);
+        waterCornerDownLeft = sheetTiles.cropTile(0,4);
+        waterCornerDownRight = sheetTiles.cropTile(2,4);
+        waterMiddleLeft = sheetTiles.cropTile(0,3);
+        waterMiddleRight = sheetTiles.cropTile(2,3);
+        waterMiddleUp= sheetTiles.cropTile(1,2);
+        waterMiddleDown= sheetTiles.cropTile(1,4);
+        waterCenter= sheetTiles.cropTile(1,3);
+        waterInsideCornerUpLeft = sheetTiles.cropTile(6,2);
+        waterInsideCornerUpRight = sheetTiles.cropTile(7,2);
+        waterInsideCornerDownLeft = sheetTiles.cropTile(6,3);
+        waterInsideCornerDownRight = sheetTiles.cropTile(7,3);
 
         ammo=sheetObjects.cropObjects(2,0);
         weapon=sheetObjects.cropObjects(0,3);

@@ -22,7 +22,7 @@ public class AssetCreate {
         gp.objectsMain[1].worldX = 20 * gp.tileSize ;
         gp.objectsMain[1].worldY = 18 * gp.tileSize ;
         gp.objectsMain[2] = new ObjectWeapon();
-        gp.objectsMain[2].worldX = 6 * gp.tileSize ;
-        gp.objectsMain[2].worldY = 10 * gp.tileSize ;
+        gp.objectsMain[2].worldX = 37 * gp.tileSize ;
+        gp.objectsMain[2].worldY = 17 * gp.tileSize ;
     }
 }

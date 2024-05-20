@@ -1,10 +1,13 @@
 package Tile;
 
 import Main.GamePanel;
+import Main.ImageScale;
 
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -20,7 +23,7 @@ public class TileManager {
 
         this.gp = gp;
 
-        tile = new Tile[20];
+        tile = new Tile[50];
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
         getTileImage();
@@ -32,57 +35,50 @@ public class TileManager {
         Init();
 
         try{
-            tile[0] = new Tile();
-            tile[0].image = ground1;
-            tile[1] = new Tile();
-            tile[1].image = ground2;
-            tile[2] = new Tile();
-            tile[2].image = hole;
-            tile[2].collission = true;
-            tile[3] = new Tile();
-            tile[3].image = wallUp;
-            tile[3].collission = true;
-            tile[4] = new Tile();
-            tile[4].image = wallDown;
-            tile[4].collission = true;
-            tile[5] = new Tile();
-            tile[5].image = wallLeft;
-            tile[5].collission = true;
-            tile[6] = new Tile();
-            tile[6].image = wallRight;
-            tile[6].collission = true;
-            tile[7] = new Tile();
-            tile[7].image = cornerUpLeft;
-            tile[7].collission = true;
-            tile[8] = new Tile();
-            tile[8].image = cornerUpRight;
-            tile[8].collission = true;
-            tile[9] = new Tile();
-            tile[9].image = cornerDownLeft;
-            tile[9].collission = true;
-            tile[10] = new Tile();
-            tile[10].image = cornerDownRight;
-            tile[10].collission = true;
-            tile[11] = new Tile();
-            tile[11].image = rock1;
-            tile[11].collission = true;
-            tile[12] = new Tile();
-            tile[12].image = rock2;
-            tile[12].collission = true;
-            tile[13] = new Tile();
-            tile[13].image = plant1;
-            tile[13].collission = true;
-            tile[15] = new Tile();
-            tile[15].image = plant2;
-            tile[15].collission = true;
-            tile[14] = new Tile();
-            tile[14].image = bones;
+
+            setup(0,ground1,false);
+            setup(1, ground2, false);
+            setup(2, hole, true);
+            setup(3, wallUp, true);
+            setup(4, wallDown, true);
+            setup(5, wallLeft, true);
+            setup(6, wallRight, true);
+            setup(7, cornerUpLeft, true);
+            setup(8, cornerUpRight, true);
+            setup(9, cornerDownLeft, true);
+            setup(10, cornerDownRight, true);
+            setup(11, rock1, true);
+            setup(12, rock2, true);
+            setup(13, plant1, true);
+            setup(14, bones, false);
+            setup(15, plant2, true);
+            setup(16,water,true);
+            setup(17,waterCornerUpLeft,true);
+            setup(18,waterMiddleUp,true);
+            setup(19,waterCornerUpRight,true);
+            setup(20,waterMiddleRight,true);
+            setup(21,waterCornerDownRight,true);
+            setup(22,waterMiddleDown,true);
+            setup(23,waterCornerDownLeft,true);
+            setup(24,waterMiddleLeft,true);
+            setup(25,waterCenter,true);
+            setup(26,waterInsideCornerUpLeft,true);
+            setup(27,waterInsideCornerUpRight,true);
+            setup(28,waterInsideCornerDownRight,true);
+            setup(29,waterInsideCornerDownLeft,true);
 
 
         }catch (Exception e){
             e.printStackTrace();
         }
 
+    }
+    public void setup(int index, BufferedImage imagePath, boolean collision) {
+        ImageScale imageScale = new ImageScale();
+            tile[index] = new Tile();
+            tile[index].image = imagePath;
+            tile[index].image = imageScale.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
+            tile[index].collission = collision;
     }
 
     public void loadMap(String path){

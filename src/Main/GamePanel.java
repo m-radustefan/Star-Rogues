@@ -33,6 +33,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     TileManager tileManager = new TileManager(this);
     KeyHandler keyH = new KeyHandler();
+    public UI ui = new UI(this);
     Thread gameThread;
     public CollisionCheck collisionCheck = new CollisionCheck(this);
     public AssetCreate assetCreate = new AssetCreate(this);
@@ -125,6 +126,9 @@ public class GamePanel extends JPanel implements Runnable {
 
         //PLAYER
         player.draw(g2);
+
+        //UI
+        ui.draw(g2);
 
         g2.dispose();
     }

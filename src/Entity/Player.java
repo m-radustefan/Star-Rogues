@@ -22,7 +22,7 @@ public class Player extends  Entity {
 
 
 
-    int hasAmmo = 0;
+    public int hasAmmo = 0;
 
     private Player (GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
@@ -33,12 +33,12 @@ public class Player extends  Entity {
 
         bounds = new Rectangle();
         bounds.x = 6;
-        bounds.y = 38;
-        bounds.width = 24;
-        bounds.height = 24;
+        bounds.y = 6;
+        bounds.width = 32;
+        bounds.height = 38;
 
         boundsDefaultX = 6;
-        boundsDefaultY = 38;
+        boundsDefaultY = 6;
 
 
         setDefaultValues();
