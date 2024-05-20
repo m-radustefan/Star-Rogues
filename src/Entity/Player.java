@@ -1,12 +1,9 @@
 package Entity;
 
 import Main.GamePanel;
-import Main.ImageScale;
 import Main.KeyHandler;
-import Tile.Tile;
 
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -91,6 +88,10 @@ public class Player extends  Entity {
             //CHECK OBJECT COLLISION
             int objectIndex = gp.collisionCheck.checkObject(this,true);
             pickObject(objectIndex);
+
+            //CHECK NPC COLLISION
+            int npcIndex = gp.collisionCheck.checkEntity(this,gp.npc);
+            interactNPC(npcIndex);
 
             //IF COLLISION = FALSE, CAN MOVE
             if(collisionOn == false){
@@ -195,15 +196,21 @@ public class Player extends  Entity {
     {
         if(index != 999)
         {
-            String objectName = gp.objectsMain[index].name;
-            gp.objectsMain[index] = null;
+            String objectName = gp.target[index].name;
+            gp.target[index] = null;
             switch (objectName) {
                 case "Ammo":
                     hasAmmo+=30;
-                    gp.objectsMain[index] = null;
+                    gp.target[index] = null;
                     System.out.println("Ammo: " + hasAmmo);
                     break;
             }
+        }
+    }
+
+    public void interactNPC(int index)
+    {
+        if(index != 999) {
         }
     }
     private BufferedImage setup(BufferedImage originalImage, int targetWidth, int targetHeight) {

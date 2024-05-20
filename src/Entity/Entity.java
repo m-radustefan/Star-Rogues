@@ -3,7 +3,6 @@ package Entity;
 import Main.GamePanel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import static Graphics.Assets.*;
 
 public class Entity {
 
@@ -18,69 +17,102 @@ public class Entity {
     public Rectangle bounds = new Rectangle(0, 0, 48, 48);
     public int boundsDefaultX, boundsDefaultY;
     public boolean collisionOn = false;
+    public int actionLockCounter = 0;
 
     // Cached scaled images
-    private BufferedImage[] idleImages;
-    private BufferedImage[] leftImages;
-    private BufferedImage[] downImages;
-    private BufferedImage[] rightImages;
-    private BufferedImage[] upImages;
+    public BufferedImage[][] images;
 
     public Entity(GamePanel gp) {
         this.gp = gp;
-        loadAndScaleImages();
+    }
+    public void setAction(){}
+    public void update(){
+        setAction();
+        collisionOn = false;
+        gp.collisionCheck.checkTile(this);
+        gp.collisionCheck.checkObject(this,false);
+        gp.collisionCheck.checkPlayer(this);
+
+
+        if(collisionOn == false){
+            switch (direction)
+            {
+                case "up":
+                    worldY -= speed;
+                    break;
+                case "down":
+                    worldY += speed;
+                    break;
+                case "left":
+                    worldX -= speed;
+                    break;
+                case "right":
+                    worldX += speed;
+                    break;
+            }
+        }
+
+        spriteCounter++;
+        if(spriteCounter >= 10) {
+            if (direction.equals("up") || direction.equals("down")) {
+                switch (spriteNum) {
+                    case 1:
+                        spriteNum = 2;
+                        break;
+                    case 2:
+                        spriteNum = 3;
+                        break;
+                    case 3:
+                        spriteNum = 4;
+                        break;
+                    case 4:
+                        spriteNum = 5;
+                        break;
+                    case 5:
+                        spriteNum = 1;
+                        break;
+                    case 6:
+                        spriteNum = 2;
+                        break;
+                }
+            } else if (direction.equals("left") || direction.equals("right")) {
+                switch (spriteNum) {
+                    case 1:
+                        spriteNum = 2;
+                        break;
+                    case 2:
+                        spriteNum = 3;
+                        break;
+                    case 3:
+                        spriteNum = 4;
+                        break;
+                    case 4:
+                        spriteNum = 5;
+                        break;
+                    case 5:
+                        spriteNum = 6;
+                        break;
+                    case 6:
+                        spriteNum = 1;
+                        break;
+                }
+            }
+            spriteCounter = 0;
+        }
     }
 
-    private void loadAndScaleImages() {
+
+    protected void loadAndScaleImages(BufferedImage[][] sourceImages) {
         int targetWidth = gp.tileSize;
         int targetHeight = gp.tileSize;
-
-        // Pre-scale and cache images
-        idleImages = new BufferedImage[]{
-                setup(monsterIdle1, targetWidth, targetHeight),
-                setup(monsterIdle2, targetWidth, targetHeight),
-                setup(monsterIdle3, targetWidth, targetHeight),
-                setup(monsterIdle4, targetWidth, targetHeight),
-                setup(monsterIdle5, targetWidth, targetHeight),
-                setup(monsterIdle3, targetWidth, targetHeight) // Assuming this is intentional
-        };
-        leftImages = new BufferedImage[]{
-                setup(monsterLeft1, targetWidth, targetHeight),
-                setup(monsterLeft2, targetWidth, targetHeight),
-                setup(monsterLeft3, targetWidth, targetHeight),
-                setup(monsterLeft4, targetWidth, targetHeight),
-                setup(monsterLeft5, targetWidth, targetHeight),
-                setup(monsterLeft3, targetWidth, targetHeight)
-        };
-        downImages = new BufferedImage[]{
-                setup(monsterDown1, targetWidth, targetHeight),
-                setup(monsterDown2, targetWidth, targetHeight),
-                setup(monsterDown3, targetWidth, targetHeight),
-                setup(monsterDown4, targetWidth, targetHeight),
-                setup(monsterDown5, targetWidth, targetHeight),
-                setup(monsterDown2, targetWidth, targetHeight)
-        };
-        rightImages = new BufferedImage[]{
-                setup(monsterRight1, targetWidth, targetHeight),
-                setup(monsterRight2, targetWidth, targetHeight),
-                setup(monsterRight3, targetWidth, targetHeight),
-                setup(monsterRight4, targetWidth, targetHeight),
-                setup(monsterRight5, targetWidth, targetHeight),
-                setup(monsterRight2, targetWidth, targetHeight)
-        };
-        upImages = new BufferedImage[]{
-                setup(monsterUp1, targetWidth, targetHeight),
-                setup(monsterUp2, targetWidth, targetHeight),
-                setup(monsterUp3, targetWidth, targetHeight),
-                setup(monsterUp4, targetWidth, targetHeight),
-                setup(monsterUp5, targetWidth, targetHeight),
-                setup(monsterUp2, targetWidth, targetHeight)
-        };
+        images = new BufferedImage[sourceImages.length][];
+        for (int i = 0; i < sourceImages.length; i++) {
+            images[i] = new BufferedImage[sourceImages[i].length];
+            for (int j = 0; j < sourceImages[i].length; j++) {
+                images[i][j] = setup(sourceImages[i][j], targetWidth, targetHeight);
+            }
+        }
     }
-
-    public void setAction(){}
-    public void update(){}
-
 
     private BufferedImage setup(BufferedImage originalImage, int targetWidth, int targetHeight) {
         BufferedImage scaledImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
@@ -102,19 +134,19 @@ public class Entity {
             BufferedImage image = null;
             switch (direction) {
                 case "idle":
-                    image = idleImages[spriteNum - 1];
+                    image = images[0][spriteNum - 1];
                     break;
                 case "left":
-                    image = leftImages[spriteNum - 1];
+                    image = images[1][spriteNum - 1];
                     break;
                 case "down":
-                    image = downImages[spriteNum - 1];
+                    image = images[4][spriteNum - 1];
                     break;
                 case "right":
-                    image = rightImages[spriteNum - 1];
+                    image = images[3][spriteNum - 1];
                     break;
                 case "up":
-                    image = upImages[spriteNum - 1];
+                    image = images[2][spriteNum - 1];
                     break;
             }
 
