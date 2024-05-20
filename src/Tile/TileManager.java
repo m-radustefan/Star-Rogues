@@ -30,6 +30,7 @@ public class TileManager {
         loadMap("/Maps/TileMap");
     }
 
+
     public void  getTileImage() {
 
         Init();
@@ -46,12 +47,12 @@ public class TileManager {
             setup(7, cornerUpLeft, true);
             setup(8, cornerUpRight, true);
             setup(9, cornerDownLeft, true);
-            setup(10, cornerDownRight, true);
-            setup(11, rock1, true);
-            setup(12, rock2, true);
-            setup(13, plant1, true);
-            setup(14, bones, false);
-            setup(15, plant2, true);
+            setup(10,cornerDownRight, true);
+            setup(11,rock1, true);
+            setup(12,rock2, true);
+            setup(13,plant1, true);
+            setup(14,bones, false);
+            setup(15,plant2, true);
             setup(16,water,true);
             setup(17,waterCornerUpLeft,true);
             setup(18,waterMiddleUp,true);

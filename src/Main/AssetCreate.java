@@ -1,5 +1,6 @@
 package Main;
 
+import Entity.NPC_Monster;
 import Objects.ObjectAmmo;
 import Objects.ObjectWeapon;
 import Objects.ObjectsMain;
@@ -24,5 +25,10 @@ public class AssetCreate {
         gp.objectsMain[2] = new ObjectWeapon();
         gp.objectsMain[2].worldX = 37 * gp.tileSize ;
         gp.objectsMain[2].worldY = 17 * gp.tileSize ;
+    }
+    public void setNPC(){
+        gp.npc[0]= new NPC_Monster((gp));
+        gp.npc[0].worldX = 21 * gp.tileSize ;
+        gp.npc[0].worldY = 23 * gp.tileSize ;
     }
 }

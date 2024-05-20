@@ -62,6 +62,33 @@ public class Assets {
     public static BufferedImage waterInsideCornerUpRight;
     public static BufferedImage waterInsideCornerDownLeft;
     public static BufferedImage waterInsideCornerDownRight;
+    public static BufferedImage monsterIdle1;
+    public static BufferedImage monsterIdle2;
+    public static BufferedImage monsterIdle3;
+    public static BufferedImage monsterIdle4;
+    public static BufferedImage monsterIdle5;
+    public static BufferedImage monsterLeft1;
+    public static BufferedImage monsterLeft2;
+    public static BufferedImage monsterLeft3;
+    public static BufferedImage monsterLeft4;
+    public static BufferedImage monsterLeft5;
+    public static BufferedImage monsterRight1;
+    public static BufferedImage monsterRight2;
+    public static BufferedImage monsterRight3;
+    public static BufferedImage monsterRight4;
+    public static BufferedImage monsterRight5;
+    public static BufferedImage monsterUp1;
+    public static BufferedImage monsterUp2;
+    public static BufferedImage monsterUp3;
+    public static BufferedImage monsterUp4;
+    public static BufferedImage monsterUp5;
+    public static BufferedImage monsterDown1;
+    public static BufferedImage monsterDown2;
+    public static BufferedImage monsterDown3;
+    public static BufferedImage monsterDown4;
+    public static BufferedImage monsterDown5;
+
+
 
     public static void Init()
     {
@@ -72,6 +99,7 @@ public class Assets {
         SpriteSheet sheetPlayerDown = new SpriteSheet(ImageLoader.LoadImage("/player/Cyborg_run_front.png"));
         SpriteSheet sheetTiles = new SpriteSheet(ImageLoader.LoadImage("/tiles/SpriteSheet.png"));
         SpriteSheet sheetObjects = new SpriteSheet(ImageLoader.LoadImage("/objects/Iconset1.png"));
+        SpriteSheet sheetMonster = new SpriteSheet(ImageLoader.LoadImage("/NPC/Monster.png"));
 
 
         playerIdle1= sheetPlayerIdle.cropPlayer(0,0);
@@ -139,6 +167,37 @@ public class Assets {
 
         ammo=sheetObjects.cropObjects(2,0);
         weapon=sheetObjects.cropObjects(0,3);
+
+        monsterIdle1 = sheetMonster.cropTile(0, 4);
+        monsterIdle2 = sheetMonster.cropTile(2, 4);
+        monsterIdle3 = sheetMonster.cropTile(4, 4);
+        monsterIdle4 = sheetMonster.cropTile(6, 4);
+        monsterIdle5 = sheetMonster.cropTile(8, 4);
+
+        monsterLeft1 = sheetMonster.cropTile(0, 0);
+        monsterLeft2 = sheetMonster.cropTile(2, 0);
+        monsterLeft3 = sheetMonster.cropTile(4, 0);
+        monsterLeft4 = sheetMonster.cropTile(6, 0);
+        monsterLeft5 = sheetMonster.cropTile(8, 0);
+
+        monsterRight1 = sheetMonster.cropTile(1, 1);
+        monsterRight2 = sheetMonster.cropTile(3, 1);
+        monsterRight3 = sheetMonster.cropTile(5, 1);
+        monsterRight4 = sheetMonster.cropTile(7, 1);
+        monsterRight5 = sheetMonster.cropTile(9, 1);
+
+        monsterUp1 = sheetMonster.cropTile(0, 2);
+        monsterUp2 = sheetMonster.cropTile(2, 2);
+        monsterUp3 = sheetMonster.cropTile(4, 2);
+        monsterUp4 = sheetMonster.cropTile(6, 2);
+        monsterUp5 = sheetMonster.cropTile(8, 2);
+
+        monsterDown1 = sheetMonster.cropTile(1, 3);
+        monsterDown2 = sheetMonster.cropTile(3, 3);
+        monsterDown3 = sheetMonster.cropTile(5, 3);
+        monsterDown4 = sheetMonster.cropTile(7, 3);
+        monsterDown5 = sheetMonster.cropTile(9, 3);
+
 
 
     }

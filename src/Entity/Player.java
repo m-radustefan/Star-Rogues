@@ -1,7 +1,9 @@
 package Entity;
 
 import Main.GamePanel;
+import Main.ImageScale;
 import Main.KeyHandler;
+import Tile.Tile;
 
 
 import javax.swing.*;
@@ -25,6 +27,7 @@ public class Player extends  Entity {
     public int hasAmmo = 0;
 
     private Player (GamePanel gp, KeyHandler keyH) {
+        super(gp);
         this.gp = gp;
         this.keyH = keyH;
 
@@ -57,6 +60,13 @@ public class Player extends  Entity {
          direction = "left";
 
     }
+//    public void setup(int index, BufferedImage imagePath, boolean collision) {
+//        ImageScale imageScale = new ImageScale();
+//        objects[index] = new Tile();
+//        tile[index].image = imagePath;
+//        tile[index].image = imageScale.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
+//        tile[index].collission = collision;
+//    }
     public void update() {
 
         if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true){
@@ -196,82 +206,92 @@ public class Player extends  Entity {
             }
         }
     }
+    private BufferedImage setup(BufferedImage originalImage, int targetWidth, int targetHeight) {
+        BufferedImage scaledImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = scaledImage.createGraphics();
+        g2d.drawImage(originalImage, 0, 0, targetWidth, targetHeight, null);
+        g2d.dispose();
+        return scaledImage;
+    }
 
-    public void  draw(Graphics2D g2) {
+    public void draw(Graphics2D g2) {
 
         Init();
 
         BufferedImage image = null;
+        int targetWidth = 32; // Set your target width
+        int targetHeight = 32; // Set your target height
+
         switch (direction) {
             case "idle":
                 if (spriteNum == 1)
-                    image = playerIdle1;
+                    image = setup(playerIdle1, targetWidth, targetHeight);
                 if (spriteNum == 2)
-                    image = playerIdle2;
+                    image = setup(playerIdle2, targetWidth, targetHeight);
                 if (spriteNum == 3)
-                    image = playerIdle3;
+                    image = setup(playerIdle3, targetWidth, targetHeight);
                 if (spriteNum == 4)
-                    image = playerIdle4;
+                    image = setup(playerIdle4, targetWidth, targetHeight);
                 if (spriteNum == 5)
-                    image = playerIdle2;
+                    image = setup(playerIdle2, targetWidth, targetHeight);
                 if (spriteNum == 6)
-                    image = playerIdle3;
+                    image = setup(playerIdle3, targetWidth, targetHeight);
                 break;
             case "left":
                 if (spriteNum == 1)
-                    image = playerLeft1;
+                    image = setup(playerLeft1, targetWidth, targetHeight);
                 if (spriteNum == 2)
-                    image = playerLeft2;
+                    image = setup(playerLeft2, targetWidth, targetHeight);
                 if (spriteNum == 3)
-                    image = playerLeft3;
+                    image = setup(playerLeft3, targetWidth, targetHeight);
                 if (spriteNum == 4)
-                    image = playerLeft4;
+                    image = setup(playerLeft4, targetWidth, targetHeight);
                 if (spriteNum == 5)
-                    image = playerLeft5;
+                    image = setup(playerLeft5, targetWidth, targetHeight);
                 if (spriteNum == 6)
-                    image = playerLeft6;
+                    image = setup(playerLeft6, targetWidth, targetHeight);
                 break;
             case "down":
                 if (spriteNum == 1)
-                    image = playerDown1;
+                    image = setup(playerDown1, targetWidth, targetHeight);
                 if (spriteNum == 2)
-                    image = playerDown2;
+                    image = setup(playerDown2, targetWidth, targetHeight);
                 if (spriteNum == 3)
-                    image = playerDown3;
+                    image = setup(playerDown3, targetWidth, targetHeight);
                 if (spriteNum == 4)
-                    image = playerDown4;
+                    image = setup(playerDown4, targetWidth, targetHeight);
                 if (spriteNum == 5)
-                    image = playerDown5;
+                    image = setup(playerDown5, targetWidth, targetHeight);
                 if (spriteNum == 6)
-                    image = playerDown2;
+                    image = setup(playerDown2, targetWidth, targetHeight);
                 break;
             case "right":
                 if (spriteNum == 1)
-                    image = playerRight1;
+                    image = setup(playerRight1, targetWidth, targetHeight);
                 if (spriteNum == 2)
-                    image = playerRight2;
+                    image = setup(playerRight2, targetWidth, targetHeight);
                 if (spriteNum == 3)
-                    image = playerRight3;
+                    image = setup(playerRight3, targetWidth, targetHeight);
                 if (spriteNum == 4)
-                    image = playerRight4;
+                    image = setup(playerRight4, targetWidth, targetHeight);
                 if (spriteNum == 5)
-                    image = playerRight5;
+                    image = setup(playerRight5, targetWidth, targetHeight);
                 if (spriteNum == 6)
-                    image = playerRight6;
+                    image = setup(playerRight6, targetWidth, targetHeight);
                 break;
             case "up":
                 if (spriteNum == 1)
-                    image = playerUp1;
+                    image = setup(playerUp1, targetWidth, targetHeight);
                 if (spriteNum == 2)
-                    image = playerUp2;
+                    image = setup(playerUp2, targetWidth, targetHeight);
                 if (spriteNum == 3)
-                    image = playerUp3;
+                    image = setup(playerUp3, targetWidth, targetHeight);
                 if (spriteNum == 4)
-                    image = playerUp4;
+                    image = setup(playerUp4, targetWidth, targetHeight);
                 if (spriteNum == 5)
-                    image = playerUp5;
+                    image = setup(playerUp5, targetWidth, targetHeight);
                 if (spriteNum == 6)
-                    image = playerUp2;
+                    image = setup(playerUp2, targetWidth, targetHeight);
                 break;
         }
 

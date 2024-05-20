@@ -1,5 +1,6 @@
 package Main;
 
+import Entity.Entity;
 import Entity.Player;
 import Objects.ObjectAmmo;
 import Objects.ObjectsMain;
@@ -32,13 +33,20 @@ public class GamePanel extends JPanel implements Runnable {
     int FPS = 60;
 
     TileManager tileManager = new TileManager(this);
-    KeyHandler keyH = new KeyHandler();
+    KeyHandler keyH = new KeyHandler(this);
     public UI ui = new UI(this);
     Thread gameThread;
+
+    //ENTITY ASSET OBJECT
     public CollisionCheck collisionCheck = new CollisionCheck(this);
     public AssetCreate assetCreate = new AssetCreate(this);
     public Player player =  Player.getInstance(this,keyH);
     public ObjectsMain objectsMain[] = new ObjectsMain[10];
+    public Entity npc[] = new Entity[10];
+    //GAME STATE
+    public int gameState;
+    public final int playState=1;
+    public final int pauseState=2;
 
 
 
@@ -55,6 +63,8 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupObjects(){
 
         assetCreate.setObjects();
+        assetCreate.setNPC();
+        gameState= playState;
     }
 
     public void startGameThread() {
@@ -103,7 +113,13 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        player.update();
+
+        if(gameState == playState) {
+            player.update();
+        }
+        if(gameState == pauseState) {
+
+        }
     }
 
     public void paintComponent(Graphics g) {
@@ -121,6 +137,14 @@ public class GamePanel extends JPanel implements Runnable {
 
             if(objectsMain[i] != null){
                 objectsMain[i].draw(g2,this);
+            }
+        }
+
+        //NPC
+        for( int i=0; i < npc.length; i++)
+        {
+            if(npc[i] != null){
+                npc[i].draw(g2);
             }
         }
 
