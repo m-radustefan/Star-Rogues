@@ -33,4 +33,8 @@ public class SpriteSheet {
     {
         return  spriteSheet.getSubimage(x* objectWidth,y* objectHeight, objectWidth, objectHeight);
     }
+    public BufferedImage cropHealthBar(int x, int y)
+    {
+        return  spriteSheet.getSubimage(x* 383,y* 95, 383, 95);
+    }
 }

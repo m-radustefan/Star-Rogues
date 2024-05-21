@@ -9,6 +9,7 @@ public class ImageLoader {
 
     public static BufferedImage LoadImage(String path)
     {
+
         try
         {
             return ImageIO.read(ImageLoader.class.getResource(path));

@@ -87,7 +87,11 @@ public class Assets {
     public static BufferedImage monsterDown3;
     public static BufferedImage monsterDown4;
     public static BufferedImage monsterDown5;
-
+    public static BufferedImage healthBar100;
+    public static BufferedImage healthBar75;
+    public static BufferedImage healthBar50;
+    public static BufferedImage healthBar25;
+    public static BufferedImage healthBar0;
 
 
     public static void Init()
@@ -100,7 +104,7 @@ public class Assets {
         SpriteSheet sheetTiles = new SpriteSheet(ImageLoader.LoadImage("/tiles/SpriteSheet.png"));
         SpriteSheet sheetObjects = new SpriteSheet(ImageLoader.LoadImage("/objects/Iconset1.png"));
         SpriteSheet sheetMonster = new SpriteSheet(ImageLoader.LoadImage("/NPC/Monster.png"));
-
+        SpriteSheet sheetHealthBar = new SpriteSheet(ImageLoader.LoadImage("/objects/HealthSprite.png"));
 
         playerIdle1= sheetPlayerIdle.cropPlayer(0,0);
         playerIdle2= sheetPlayerIdle.cropPlayer(1,0);
@@ -197,6 +201,12 @@ public class Assets {
         monsterDown3 = sheetMonster.cropTile(5, 3);
         monsterDown4 = sheetMonster.cropTile(7, 3);
         monsterDown5 = sheetMonster.cropTile(9, 3);
+
+        healthBar100 = sheetHealthBar.cropHealthBar(0,0);
+        healthBar75 = sheetHealthBar.cropHealthBar(0,1);
+        healthBar50 = sheetHealthBar.cropHealthBar(0,2);
+        healthBar25 = sheetHealthBar.cropHealthBar(0,3);
+        healthBar0 = sheetHealthBar.cropHealthBar(0,4);
 
 
 

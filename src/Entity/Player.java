@@ -56,14 +56,10 @@ public class Player extends  Entity {
          speed = 4;
          direction = "left";
 
+         maxLife=5;
+         life = maxLife;
+
     }
-//    public void setup(int index, BufferedImage imagePath, boolean collision) {
-//        ImageScale imageScale = new ImageScale();
-//        objects[index] = new Tile();
-//        tile[index].image = imagePath;
-//        tile[index].image = imageScale.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
-//        tile[index].collission = collision;
-//    }
     public void update() {
 
         if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true){

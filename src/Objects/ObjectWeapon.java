@@ -1,10 +1,14 @@
 package Objects;
 
+import Main.GamePanel;
+
 import static Graphics.Assets.*;
 
 public class ObjectWeapon extends ObjectsMain {
 
-    public ObjectWeapon() {
+    GamePanel gp;
+
+    public ObjectWeapon(GamePanel gp) {
         name = "Weapon";
         Init();
         try{
@@ -13,7 +17,9 @@ public class ObjectWeapon extends ObjectsMain {
         catch(Exception e){
             e.printStackTrace();
         }
+        image = setup(image, 32, 32);
         collision = false;
+
     }
 }
 

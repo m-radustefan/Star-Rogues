@@ -1,12 +1,15 @@
 package Objects;
 
 import Graphics.SpriteSheet;
+import Main.GamePanel;
 
 import static Graphics.Assets.*;
 
 public class ObjectAmmo extends ObjectsMain {
 
-    public ObjectAmmo() {
+    GamePanel gp;
+
+    public ObjectAmmo(GamePanel gp) {
         name = "Ammo";
         Init();
         try{
@@ -15,6 +18,7 @@ public class ObjectAmmo extends ObjectsMain {
         catch(Exception e){
             e.printStackTrace();
         }
+        image = setup(image, 32, 32);
         collision = false;
     }
 }
