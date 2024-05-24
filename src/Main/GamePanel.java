@@ -2,11 +2,13 @@ package Main;
 
 import Entity.Entity;
 import Entity.Player;
-import Objects.ObjectsMain;
 import Tile.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -32,14 +34,16 @@ public class GamePanel extends JPanel implements Runnable {
     TileManager tileManager = new TileManager(this);
     KeyHandler keyH = new KeyHandler(this);
     public UI ui = new UI(this);
+    public EventHandler eventHandler = new EventHandler(this);
     Thread gameThread;
 
     //ENTITY ASSET OBJECT
     public CollisionCheck collisionCheck = new CollisionCheck(this);
     public AssetCreate assetCreate = new AssetCreate(this);
     public Player player =  Player.getInstance(this,keyH);
-    public ObjectsMain target[] = new ObjectsMain[10];
+    public Entity object[] = new Entity[10];
     public Entity npc[] = new Entity[10];
+    ArrayList<Entity> entityList = new ArrayList<>();
     //GAME STATE
     public int gameState;
     public final int titleState=0;
@@ -129,43 +133,43 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void paintComponent(Graphics g) {
-
         super.paintComponent(g);
-
         Graphics2D g2 = (Graphics2D) g;
 
-        //TITLE SCREEN
-        if (gameState == titleState)
-        {
+        if (gameState == titleState) {
             ui.draw(g2);
-        }//OTHERS
-        else
-        {
-            //TITLE
+        } else {
             tileManager.draw(g2);
+            // Add player and other entities to list for drawing
+            entityList.add(player);
 
-            //OBJECTS
-            for (int i = 0; i < target.length; i++) {
-
-                if (target[i] != null) {
-                    target[i].draw(g2, this);
-                }
-            }
-
-            //NPC
             for (int i = 0; i < npc.length; i++) {
                 if (npc[i] != null) {
-                    npc[i].draw(g2);
+                    entityList.add(npc[i]);
                 }
             }
 
-            //PLAYER
-            player.draw(g2);
+            for (int i = 0; i < object.length; i++) {
+                if (object[i] != null) {
+                    entityList.add(object[i]);
+                }
+            }
 
-            //UI
+            // Sort entities by worldY for correct drawing order
+            Collections.sort(entityList, Comparator.comparingInt(e -> e.worldY));
+
+            // Draw all entities
+            for (Entity entity : entityList) {
+                entity.draw(g2);
+            }
+
+            // Clear the list after drawing
+            entityList.clear();
+
+            // Draw tiles and UI
+
             ui.draw(g2);
-
-            g2.dispose();
         }
+        g2.dispose();
     }
 }

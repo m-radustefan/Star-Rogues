@@ -1,8 +1,8 @@
 package Main;
 
+import Entity.Entity;
 import Objects.ObjectAmmo;
 import Objects.ObjectHealthBar;
-import Objects.ObjectsMain;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -26,7 +26,7 @@ public class UI {
         AmmoImage = ammo;
 
         //CREATE HUD OBJECT
-        ObjectsMain heart = new ObjectHealthBar(gp);
+        Entity heart = new ObjectHealthBar(gp);
         heart100=healthBar100;
         heart75=healthBar75;
         heart50=healthBar50;

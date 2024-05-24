@@ -65,21 +65,21 @@ public class CollisionCheck {
 
         int index = 999;
 
-        for(int i = 0; i< gp.target.length; i++)
+        for(int i = 0; i< gp.object.length; i++)
         {
-            if(gp.target[i] != null)
+            if(gp.object[i] != null)
             {
                 entity.bounds.x = entity.worldX + entity.bounds.x;
                 entity.bounds.y = entity.worldY + entity.bounds.y;
 
-                gp.target[i].bounds.x = gp.target[i].worldX + gp.target[i].bounds.x;
-                gp.target[i].bounds.y = gp.target[i].worldY + gp.target[i].bounds.y;
+                gp.object[i].bounds.x = gp.object[i].worldX + gp.object[i].bounds.x;
+                gp.object[i].bounds.y = gp.object[i].worldY + gp.object[i].bounds.y;
 
                 switch (entity.direction) {
                     case "up":
                         entity.bounds.y -= entity.speed;
-                        if (entity.bounds.intersects(gp.target[i].bounds)) {
-                            if (gp.target[i].collision == true)
+                        if (entity.bounds.intersects(gp.object[i].bounds)) {
+                            if (gp.object[i].collision == true)
                             {
                                 entity.collisionOn = true;
                             }
@@ -91,8 +91,8 @@ public class CollisionCheck {
                         break;
                     case "down":
                         entity.bounds.y += entity.speed;
-                        if (entity.bounds.intersects(gp.target[i].bounds)) {
-                            if (gp.target[i].collision == true)
+                        if (entity.bounds.intersects(gp.object[i].bounds)) {
+                            if (gp.object[i].collision == true)
                             {
                                 entity.collisionOn = true;
                             }
@@ -104,8 +104,8 @@ public class CollisionCheck {
                         break;
                     case "left":
                         entity.bounds.x -= entity.speed;
-                        if (entity.bounds.intersects(gp.target[i].bounds)) {
-                            if (gp.target[i].collision == true)
+                        if (entity.bounds.intersects(gp.object[i].bounds)) {
+                            if (gp.object[i].collision == true)
                             {
                                 entity.collisionOn = true;
                             }
@@ -117,8 +117,8 @@ public class CollisionCheck {
                         break;
                     case "right":
                         entity.bounds.x += entity.speed;
-                        if (entity.bounds.intersects(gp.target[i].bounds)) {
-                            if (gp.target[i].collision == true)
+                        if (entity.bounds.intersects(gp.object[i].bounds)) {
+                            if (gp.object[i].collision == true)
                             {
                                 entity.collisionOn = true;
                             }
@@ -133,8 +133,8 @@ public class CollisionCheck {
                 }
                 entity.bounds.x = entity.boundsDefaultX;
                 entity.bounds.y = entity.boundsDefaultY;
-                gp.target[i].bounds.x = gp.target[i].boundsDefaultX;
-                gp.target[i].bounds.y = gp.target[i].boundsDefaultY;
+                gp.object[i].bounds.x = gp.object[i].boundsDefaultX;
+                gp.object[i].bounds.y = gp.object[i].boundsDefaultY;
             }
         }
 

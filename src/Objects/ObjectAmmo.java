@@ -1,24 +1,25 @@
 package Objects;
 
+import Entity.Entity;
 import Graphics.SpriteSheet;
 import Main.GamePanel;
 
+import java.awt.image.BufferedImage;
+
 import static Graphics.Assets.*;
 
-public class ObjectAmmo extends ObjectsMain {
-
-    GamePanel gp;
+public class ObjectAmmo extends Entity {
 
     public ObjectAmmo(GamePanel gp) {
+
+       super(gp);
+
         name = "Ammo";
         Init();
-        try{
-            image = ammo;
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-        image = setup(image, 32, 32);
+        BufferedImage[][] ammoImage = {
+                { ammo }
+        };
+        loadAndScaleImages(ammoImage);
         collision = false;
     }
 }

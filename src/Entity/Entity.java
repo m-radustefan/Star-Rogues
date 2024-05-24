@@ -9,7 +9,7 @@ public class Entity {
     GamePanel gp;
     public int worldX, worldY;
     public int speed;
-    public String direction;
+    public String direction = "idle";
 
     public int spriteCounter = 0;
     public int spriteNum = 1;
@@ -25,6 +25,11 @@ public class Entity {
 
     // Cached scaled images
     public BufferedImage[][] images;
+
+    //For objects
+    public BufferedImage image,scaledImage,image2,image3,image4,image5;
+    public String name;
+    public boolean collision = false;
 
     public Entity(GamePanel gp) {
         this.gp = gp;
@@ -118,7 +123,7 @@ public class Entity {
         }
     }
 
-    private BufferedImage setup(BufferedImage originalImage, int targetWidth, int targetHeight) {
+    public BufferedImage setup(BufferedImage originalImage, int targetWidth, int targetHeight) {
         BufferedImage scaledImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = scaledImage.createGraphics();
         g2d.drawImage(originalImage, 0, 0, targetWidth, targetHeight, null);

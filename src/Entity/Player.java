@@ -89,6 +89,9 @@ public class Player extends  Entity {
             int npcIndex = gp.collisionCheck.checkEntity(this,gp.npc);
             interactNPC(npcIndex);
 
+            //CHECK EVENT
+            gp.eventHandler.checkEvent();
+
             //IF COLLISION = FALSE, CAN MOVE
             if(collisionOn == false){
                 switch (direction)
@@ -192,12 +195,12 @@ public class Player extends  Entity {
     {
         if(index != 999)
         {
-            String objectName = gp.target[index].name;
-            gp.target[index] = null;
+            String objectName = gp.object[index].name;
+            gp.object[index] = null;
             switch (objectName) {
                 case "Ammo":
                     hasAmmo+=30;
-                    gp.target[index] = null;
+                    gp.object[index] = null;
                     System.out.println("Ammo: " + hasAmmo);
                     break;
             }
@@ -209,7 +212,7 @@ public class Player extends  Entity {
         if(index != 999) {
         }
     }
-    private BufferedImage setup(BufferedImage originalImage, int targetWidth, int targetHeight) {
+    public BufferedImage setup(BufferedImage originalImage, int targetWidth, int targetHeight) {
         BufferedImage scaledImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = scaledImage.createGraphics();
         g2d.drawImage(originalImage, 0, 0, targetWidth, targetHeight, null);
